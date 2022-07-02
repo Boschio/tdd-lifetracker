@@ -44,6 +44,11 @@ class ApiClient {
         return await this.request({ endpoint: `auth/login`, method: `POST`, data: credentials})
     }
 
+    async logoutUser() {
+        this.setToken(null)
+        localStorage.setItem(this.tokenName, "")
+    }
+    
     async signupUser(credentials) {
         return await this.request({ endpoint: `auth/register`, method: `POST`, data: credentials})
     }

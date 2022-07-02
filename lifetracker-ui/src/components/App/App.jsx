@@ -65,7 +65,7 @@ export default function App() {
 
           <main>
 
-            <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Navbar user={user} setUser={setUser} setError={setError} />
             <Routes>
             
               <Route path = "/" element={<LandingPage />} />

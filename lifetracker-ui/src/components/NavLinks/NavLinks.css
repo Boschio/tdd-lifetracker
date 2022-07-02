@@ -20,3 +20,8 @@ a {
     text-decoration: none;
 }
 
+.logout-button {
+    border: none;
+    background: transparent;
+}
+

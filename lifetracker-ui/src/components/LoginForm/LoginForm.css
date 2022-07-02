@@ -7,6 +7,11 @@
     color: black;
   }
 
-  .login-btn {
+  .submit-login {
     color: black;
+    
+  }
+
+  .redirect {
+    text-decoration: underline;
   }
