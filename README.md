@@ -46,7 +46,7 @@ Implement any of the following features to improve the application:
 
 ### Walkthrough Video
 
-![Lifetracker walkthrough week 1](lifetracker1.gif)
+![Lifetracker walkthrough week 1](lifetracker.gif)
 
 ## Goals
 
