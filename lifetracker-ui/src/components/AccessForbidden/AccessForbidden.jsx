@@ -4,7 +4,7 @@ export default function AccessForbidden() {
 
     return (
         <div className="access-forbidden">
-            Access Forbidden
+            <b>Access Forbidden:</b> You must be logged in to access this page.
         </div>
     )
 }

@@ -3,6 +3,7 @@ import API_BASE_URL from "../../../constants"
 
 class ApiClient {
     constructor(remoteHostUrl) {
+        this.remoteHostUrl = remoteHostUrl
         this.token = null
     }
 
@@ -11,7 +12,7 @@ class ApiClient {
     }
 
     async request({ endpoint, method = `GET`, data={}}) {
-        const url = `${this.remoteHostUrl}/${endpoint}}`
+        const url = `${this.remoteHostUrl}/${endpoint}`
 
         const headers = {
             "Content-Type": "application/json"
@@ -43,6 +44,11 @@ class ApiClient {
         return await this.request({ endpoint: `auth/login`, method: `POST`, data: credentials})
     }
 
+    async logoutUser() {
+        this.setToken(null)
+        localStorage.setItem(this.tokenName, "")
+    }
+    
     async signupUser(credentials) {
         return await this.request({ endpoint: `auth/register`, method: `POST`, data: credentials})
     }

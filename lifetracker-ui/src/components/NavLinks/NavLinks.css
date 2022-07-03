@@ -20,3 +20,11 @@ a {
     text-decoration: none;
 }
 
+.logout-button {
+    border: none;
+    background: transparent;
+}
+
+.error {
+    color: rgba(255, 0, 0, 0.777);
+}

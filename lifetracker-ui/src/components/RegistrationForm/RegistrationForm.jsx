@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import apiClient from "../../services/apiClient"
 import "./RegistrationForm.css"
@@ -17,6 +17,13 @@ export default function RegistrationForm({user, setUser}) {
       password: "",
       passwordConfirm: ""
     })
+
+    useEffect(() => {
+      // redirect if user is logged in
+      if (user?.email) {
+        navigate("/activity")
+      }
+    }, [user, navigate])
 
     const handleOnInputChange = (event) => {
         if (event.target.name === "password") {
@@ -40,7 +47,6 @@ export default function RegistrationForm({user, setUser}) {
             setErrors((error) => ({ ...error, email: null }))
           }
         }
-    
         setForm((form) => ({ ...form, [event.target.name]: event.target.value }))
       }
 
@@ -55,14 +61,17 @@ export default function RegistrationForm({user, setUser}) {
         } else {
           setErrors((error) => ({ ...error, passwordConfirm: null }))
         }
-
-        const {data, error} = await apiClient.signupUser({ email: form.email, password: form.password})
+        console.log("USER: ",form.username)
+        const {data, error} = await apiClient.signupUser({ username: form.username, 
+                                                            firstName: form.firstName, lastName: form.lastName, 
+                                                            email: form.email, password: form.password})
         if(error) setErrors((e) => ({ ...e, form: error}))
         if(data?.user) {
+          
           setUser(data.user)
           apiClient.setToken(data.token)
         }
-        // setIsProcessing(false)
+        setIsLoading(false)
       }
 
     return (
@@ -71,20 +80,24 @@ export default function RegistrationForm({user, setUser}) {
             <div className="registration-container">
 
                 <input className="form-input" name="email" type="email" placeholder="Email" value={form.email} onChange={handleOnInputChange} />
+                {errors.email && <span className="error">{errors.email}</span>}
 
                 <input className="form-input" name="username" type="text" placeholder="your_username" value={form.username} onChange={handleOnInputChange} />
-                
+                {errors.username && <span className="error">{errors.username}</span>}
+
                 <input className="form-input" name="firstName" type="text" placeholder="First Name" value={form.firstName} onChange={handleOnInputChange} />
                 <input className="form-input" name="lastName" type="text" placeholder="Last Name" value={form.lastName} onChange={handleOnInputChange} />
 
                 <input className="form-input" name="password" type="password" placeholder="Enter a secure password" value={form.password} onChange={handleOnInputChange} />
+                {errors.password && <span className="error">{errors.password}</span>}
 
                 <input className="form-input" name="passwordConfirm" type="password" placeholder="Confirm your password" value={form.passwordConfirm} onChange={handleOnInputChange} />
+                {errors.passwordConfirm && <span className="error">{errors.passwordConfirm}</span>}
 
-                <button className="submit-registration" onClick={handleOnSubmit}>Create Account</button>
+                <button className="submit-registration" onClick={handleOnSubmit}>{isLoading ? "Loading..." : "Create Account"}</button>
 
                 <div className="login-redirect">
-                    <p>Already have an account? Login <Link to="/login"><span>here</span></Link></p>
+                    <p>Already have an account? Login <Link className="redirect" to="/login"><span>here.</span></Link></p>
                 </div>
             </div>
         </div>
