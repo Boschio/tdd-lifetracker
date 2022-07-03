@@ -11,7 +11,6 @@ import NutritionPage from "components/NutritionPage/NutritionPage"
 import "./App.css"
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState({})
   const [nutrition, setNutrition] = useState([])
   const [error, setError] = useState(null)
@@ -71,13 +70,13 @@ export default function App() {
               <Route path = "/" element={<LandingPage />} />
 
                 
-              <Route path = "/login" element={<LoginPage user={user} setUser={setUser} setIsLoggedIn={setIsLoggedIn}  />}/>
+              <Route path = "/login" element={<LoginPage user={user} setUser={setUser}  />}/>
               <Route path = "/register" element={<RegistrationPage user={user} setUser={setUser} />}/>
 
                {/* Need to figure out when user is logged in to register Activity
               and Nutrition, otherwise render AccessForbidden */}
-              <Route path = "/activity" element={<ActivityPage isLoggedIn={isLoggedIn} />}/>
-              <Route path = "/nutrition/*" element={<NutritionPage isLoggedIn={isLoggedIn} />}/>
+              <Route path = "/activity" element={<ActivityPage user={user} />}/>
+              <Route path = "/nutrition/*" element={<NutritionPage user={user} />}/>
               {/* <Route path="*" element={<NotFound />}></Route> */}
               
             </Routes>

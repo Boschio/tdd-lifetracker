@@ -25,3 +25,6 @@ a {
     background: transparent;
 }
 
+.error {
+    color: rgba(255, 0, 0, 0.777);
+}
