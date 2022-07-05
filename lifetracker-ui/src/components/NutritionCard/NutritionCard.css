@@ -1,0 +1,10 @@
+.nutrition-card {
+    display:flex;
+    justify-content: center;
+    border: 1px;
+    border-color: red;
+}
+
+p {
+    padding: 5px;
+}

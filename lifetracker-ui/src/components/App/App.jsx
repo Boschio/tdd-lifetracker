@@ -8,6 +8,7 @@ import LoginPage from "components/LoginPage/LoginPage"
 import RegistrationPage from "components/RegistrationPage/RegistrationPage"
 import ActivityPage from "components/ActivityPage/ActivityPage"
 import NutritionPage from "components/NutritionPage/NutritionPage"
+import AccessForbidden from "components/AccessForbidden/AccessForbidden"
 import "./App.css"
 
 export default function App() {
@@ -16,18 +17,18 @@ export default function App() {
   const [error, setError] = useState(null)
   const [isFetching, setIsFetching] = useState(false)
 
-  // useEffect(() => {
-  //   const fetchNutrition = async () => {
-  //     setIsFetching(true)
+  useEffect(() => {
+    const fetchNutrition = async () => {
+      setIsFetching(true)
 
-  //     const { data, error } = await apiClient.listNutrition()
-  //     if(data) setNutrition(data.nutrition)
-  //     if (error) setError(error)
+      const { data, error } = await apiClient.listNutrition()
+      if(data) setNutrition(data.nutrition)
+      if (error) setError(error)
 
-  //     setIsFetching(false)
-  //   }
-  //   fetchNutrition()
-  // },[])
+      setIsFetching(false)
+    }
+    fetchNutrition()
+  },[])
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -42,20 +43,20 @@ export default function App() {
     }
   },[])
 
-  const addNutrition = (newNut) => {
-    setNutrition((oldNut) => [newNut, ...oldNut])
-  }
+  // const addNutrition = (newNut) => {
+  //   setNutrition((oldNut) => [newNut, ...oldNut])
+  // }
 
-  const updateNutrition = ({ nutId, nutUpdate}) => {
-    setNutrition((oldNut) => {
-      return oldNut.map((nut) =>{
-        if(nut.id === Number(nutId)) {
-          return {...nut, ...nutUpdate}
-        }  
-        return nut
-      })
-    })
-  }
+  // const updateNutrition = ({ nutId, nutUpdate}) => {
+  //   setNutrition((oldNut) => {
+  //     return oldNut.map((nut) =>{
+  //       if(nut.id === Number(nutId)) {
+  //         return {...nut, ...nutUpdate}
+  //       }  
+  //       return nut
+  //     })
+  //   })
+  // }
 
   return (
     <div className="app">
@@ -75,8 +76,8 @@ export default function App() {
 
                {/* Need to figure out when user is logged in to register Activity
               and Nutrition, otherwise render AccessForbidden */}
-              <Route path = "/activity" element={<ActivityPage user={user} />}/>
-              <Route path = "/nutrition/*" element={<NutritionPage user={user} />}/>
+              <Route path = "/activity" element={user?.email? <ActivityPage user={user} />: <AccessForbidden />}/>
+              <Route path = "/nutrition/*" element={user?.email? <NutritionPage user={user} nutrition={nutrition} />: <AccessForbidden />}/>
               {/* <Route path="*" element={<NotFound />}></Route> */}
               
             </Routes>

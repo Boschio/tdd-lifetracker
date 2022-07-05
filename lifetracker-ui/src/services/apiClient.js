@@ -37,7 +37,7 @@ class ApiClient {
     }
 
     async createNutrition(nutrition) {
-        return await this.request({ endpoint: `nutrition`, method: `POST`, data: credentials})
+        return await this.request({ endpoint: `nutrition/create`, method: `POST`, data: nutrition})
     }
 
     async loginUser(credentials) {
