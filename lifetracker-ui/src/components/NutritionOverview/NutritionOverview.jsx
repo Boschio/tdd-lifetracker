@@ -1,8 +1,11 @@
 import NutritionFeed from "components/NutritionFeed/NutritionFeed"
 import * as React from "react"
 import { Link } from "react-router-dom"
+import  { useAuthContext } from "../../../../contexts/auth"
 
-export default function NutritionOverview({ user, nutrition }) {
+export default function NutritionOverview() {
+    const { user } = useAuthContext()
+    
 
     return (
         <div className="nutrition-overview">
@@ -12,7 +15,7 @@ export default function NutritionOverview({ user, nutrition }) {
                 <Link to="./create">Record Nutrition</Link>
             </div>
             
-            <NutritionFeed user={user} nutrition={nutrition} />
+            <NutritionFeed />
         </div>
     )
 }

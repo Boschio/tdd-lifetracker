@@ -3,8 +3,11 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import apiClient from "../../services/apiClient"
 import "./NutritionForm.css"
+// import { useNutritionContext } from "../../../../contexts/nutrition"
+
 
 export default function NutritionForm() {
+    // const { nutritions, setNutritions } = useNutritionContext()
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState({})
@@ -28,7 +31,10 @@ export default function NutritionForm() {
         if(error) setErrors((e) => ({ ...e, form: error}))
 
         setIsLoading(false)
+          //maybe append to nutritions?
         navigate("/nutrition")
+        window.location.reload(false) //Temp fix to show all nutrition when new created, for now
+        
       }
     return (
         <div className="nutrition-form">

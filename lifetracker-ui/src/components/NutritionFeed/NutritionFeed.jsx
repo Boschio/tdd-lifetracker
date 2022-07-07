@@ -1,28 +1,16 @@
 import NutritionCard from "components/NutritionCard/NutritionCard"
 import * as React from "react"
-import { useState, useEffect } from "react"
-import apiClient from "../../services/apiClient"
+import  { useAuthContext } from "../../../../contexts/auth"
+import { useNutritionContext } from "../../../../contexts/nutrition"
 
-export default function NutritionFeed({ user, nutrition }) {
-    // const [nutrition, setNutrition] = useState({})
-
-    // useEffect(() => {
-    //     const fetchNutrition = async () => {
-    //         // setIsFetching(true)
-
-    //         const { data, error } = await apiClient.listNutrition()
-    //         if(data) setNutrition(data.nutrition)
-    //         if (error) setError(error)
-
-    //         // setIsFetching(false)
-    //     }
-    // fetchNutrition()
-    // },[])
+export default function NutritionFeed() {
+    const { user } = useAuthContext()
+    const { nutritions } = useNutritionContext()
 
     return (
         <div className="nutrition-feed">
-            {nutrition?.filter(filteredItem => filteredItem.userId === user.id).map(item =>(
-                <NutritionCard item={item} />
+            {nutritions?.filter(filteredItem => filteredItem.userId === user.id).map(nutrition =>(
+                <NutritionCard nutrition={nutrition} />
             ))}
             {/* <NutritionCard /> */}
         </div>

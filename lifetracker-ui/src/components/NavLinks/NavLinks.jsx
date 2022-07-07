@@ -2,8 +2,10 @@ import * as React from "react"
 import { Link } from "react-router-dom"
 import apiClient from "../../services/apiClient"
 import "./NavLinks.css"
+import  { useAuthContext } from "../../../../contexts/auth"
 
-export default function NavLinks({ user, setUser, setError }) {
+export default function NavLinks() {
+    const { user, setUser, setError } = useAuthContext()
 
     const handleLogout = async () => {
         await apiClient.logoutUser()

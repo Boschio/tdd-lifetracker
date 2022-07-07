@@ -2,10 +2,11 @@ import * as React from "react"
 import { useState, useEffect } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import apiClient from "../../services/apiClient"
+import  { useAuthContext } from "../../../../contexts/auth"
 import "./RegistrationForm.css"
  
-export default function RegistrationForm({user, setUser}) {
-
+export default function RegistrationForm() {
+    const { user, setUser } = useAuthContext()
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState({})
