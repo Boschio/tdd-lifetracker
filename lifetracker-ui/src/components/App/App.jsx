@@ -6,6 +6,8 @@ import LoginPage from "components/LoginPage/LoginPage"
 import RegistrationPage from "components/RegistrationPage/RegistrationPage"
 import ActivityPage from "components/ActivityPage/ActivityPage"
 import NutritionPage from "components/NutritionPage/NutritionPage"
+import SleepPage from "components/SleepPage/SleepPage"
+import ExercisePage from "components/ExercisePage/ExercisePage"
 import AccessForbidden from "components/AccessForbidden/AccessForbidden"
 import { AuthContextProvider, useAuthContext } from "../../../../contexts/auth"
 import "./App.css"
@@ -32,7 +34,6 @@ function App() {
             <Routes>
             
               <Route path = "/" element={<LandingPage />} />
-
                 
               <Route path = "/login" element={<LoginPage />}/>
               <Route path = "/register" element={<RegistrationPage />}/>
@@ -41,6 +42,8 @@ function App() {
               and Nutrition, otherwise render AccessForbidden */}
               <Route path = "/activity" element={user?.email? <ActivityPage />: <AccessForbidden />}/>
               <Route path = "/nutrition/*" element={user?.email? <NutritionPage />: <AccessForbidden />}/>
+              <Route path = "/exercise/*" element={user?.email? <ExercisePage />: <AccessForbidden />}/>
+              <Route path = "/sleep/*" element={user?.email? <SleepPage />: <AccessForbidden />}/>
               {/* <Route path="*" element={<NotFound />}></Route> */}
               
             </Routes>

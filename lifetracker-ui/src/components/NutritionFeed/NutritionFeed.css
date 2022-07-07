@@ -1,0 +1,7 @@
+.nutrition-feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,370px);
+    grid-auto-rows: auto;
+    justify-content: center;
+    width: 95vw;
+}
