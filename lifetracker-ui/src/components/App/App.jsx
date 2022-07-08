@@ -9,7 +9,7 @@ import NutritionPage from "components/NutritionPage/NutritionPage"
 import SleepPage from "components/SleepPage/SleepPage"
 import ExercisePage from "components/ExercisePage/ExercisePage"
 import AccessForbidden from "components/AccessForbidden/AccessForbidden"
-import { AuthContextProvider, useAuthContext } from "../../../../contexts/auth"
+import { AuthContextProvider, useAuthContext } from "../../contexts/auth"
 import "./App.css"
 
 export default function AppContainer() {

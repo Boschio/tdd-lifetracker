@@ -1,7 +1,7 @@
 import NutritionFeed from "components/NutritionFeed/NutritionFeed"
 import * as React from "react"
 import { Link } from "react-router-dom"
-import  { useAuthContext } from "../../../../contexts/auth"
+import  { useAuthContext } from "../../contexts/auth"
 import "./NutritionOverview.css"
 
 export default function NutritionOverview() {

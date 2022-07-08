@@ -2,7 +2,7 @@ import * as React from "react"
 import { useState, useEffect } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import apiClient from "../../services/apiClient"
-import  { useAuthContext } from "../../../../contexts/auth"
+import  { useAuthContext } from "../../contexts/auth"
 import "./RegistrationForm.css"
  
 export default function RegistrationForm() {

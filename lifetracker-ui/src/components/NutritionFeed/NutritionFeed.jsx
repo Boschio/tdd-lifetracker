@@ -1,7 +1,7 @@
 import NutritionCard from "components/NutritionCard/NutritionCard"
 import * as React from "react"
-import  { useAuthContext } from "../../../../contexts/auth"
-import { useNutritionContext } from "../../../../contexts/nutrition"
+import  { useAuthContext } from "../../contexts/auth"
+import { useNutritionContext } from "../../contexts/nutrition"
 import "./NutritionFeed.css"
 
 export default function NutritionFeed() {

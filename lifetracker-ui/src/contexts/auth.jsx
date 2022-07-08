@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react"
-import apiClient from "../lifetracker-ui/src/services/apiClient"
+import apiClient from "../services/apiClient"
 
 const AuthContext = createContext(null)
 

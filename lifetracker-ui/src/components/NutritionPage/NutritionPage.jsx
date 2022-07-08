@@ -3,8 +3,8 @@ import NutritionDetail from "components/NutritionDetail/NutritionDetail"
 import NutritionNew from "components/NutritionNew/NutritionNew"
 import * as React from "react"
 import { Routes, Route } from "react-router-dom"
-import  { useAuthContext } from "../../../../contexts/auth"
-import { NutritionContextProvider, useNutritionContext } from "../../../../contexts/nutrition"
+import  { useAuthContext } from "../../contexts/auth"
+import { NutritionContextProvider, useNutritionContext } from "../../contexts/nutrition"
 
 export default function NutritionContainer() {
     return (
