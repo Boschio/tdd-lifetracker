@@ -61,4 +61,6 @@ class ApiClient {
 
 }
 
-export default new ApiClient(API_BASE_URL || "http://localhost:3001")
+// export default new ApiClient(API_BASE_URL || "http://localhost:3001")
+// export default new ApiClient(API_BASE_URL)
+export default new ApiClient("https://bosch-lifetracker.herokuapp.com")
