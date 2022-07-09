@@ -47,7 +47,7 @@ Implement any of the following features to improve the application:
 ### Walkthrough Video
 
 Week 2 - Heroku/Surge
-![Lifetracker walkthrough week 2](lifetracker-deployed.gif)
+![Lifetracker walkthrough week 2](lifetracker2.gif)
 
 Week 1 - Localhost
 ![Lifetracker walkthrough week 1](lifetracker.gif)
